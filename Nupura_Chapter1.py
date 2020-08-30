@@ -18,7 +18,6 @@ print ("There are {1} seconds per hour and {0} seconds per day ".format(seconds_
 
 #Part4:
 Person='nupura prakash mukadam'
-Email= 'nupura@gmail.com'
 Address='''Tulshibaugwale Colony
 Sahakarnagar no 2
 Pune-Maharashtra Pincode 411009'''
@@ -43,8 +42,22 @@ State='Maharshtra'
 Pincode='411009'
 print('Address(from diff strings):\n{}\n{}\n{} {} {}\n'.format(AddLine1,AddLine2,City,State,Pincode))
 
+#Part6:
 #Email validation:
-if len(Email)<=20 and Email.count('@')==1 and Email.count('.')==1 and Email.isspace()==False:
+Email= 'nupura@gmail.com'
+x=Email.partition('@')
+y=x[2].partition('.')
+
+if len(Email)<=20 and Email.count('@')==1 and Email.count('.')==1 and Email.isspace()==False and x[1]=='@' and y[1]=='.' and x[0]!='' and y[0]!='' and y[2]!='':
 	print('Email validation: Valid email address: '+Email)
 else:	
 	print('Email validation: Invalid email address: '+Email)
+
+print ('Upper letters: '+FirstName.upper())
+print ('Lower letters: '+FirstName.lower())
+
+text='Good Morning! How are you?'
+print ('Find command: Location of "are" in the sentence: "'+ text+'" is -->'+ str(text.find('are')))
+
+text1='     apple    '
+print ('Strip command: Do you like '+text1.strip()+' or banana?')
