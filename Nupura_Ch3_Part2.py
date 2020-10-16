@@ -7,12 +7,11 @@
 #Compare both the lists
 weekdays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 newweek = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','HDay1','Sunday','Mercury','Venus','Mars']
+mismatch = []
 print(weekdays and newweek)
-cnt=0
 matchcnt=0
-maxcnt = max(len(weekdays),len(newweek))
+#maxcnt = max(len(weekdays),len(newweek))
 print("Max Count {}".format(maxcnt))
-i=1
 
 if len(weekdays)>len(newweek):
     print("Weekdays list ({}) is greater than new week list ({})".format(len(weekdays),len(newweek)))
@@ -20,33 +19,45 @@ elif len(weekdays)<len(newweek):
     print("New week list ({}) is greater than weekdays list ({})".format(len(newweek),len(weekdays)))
 else:
     print("Weekdays and new week list has same number of entries {}".format(len(weekdays)))
-
-while cnt < maxcnt: #(len(weekdays),len(newweek)):
+    
+#1st way:Create new mismatch list to display mismatched entries
+    cnt=0
+while cnt < len(newweek):
+    if str(newweek[cnt]) not in weekdays:
+        mismatch.append(newweek[cnt])
+    cnt+=1
+print(mismatch)
+    
+#2nd way: remove the matched elements from other list 'newweek' 
+cnt=0
+while cnt < len(weekdays): #(len(weekdays),len(newweek)):
     if str(weekdays[cnt]) in newweek:
             print(weekdays[cnt])
-            print(i)
-            i+=1
+            element=weekdays[cnt]
+            newweek.remove(element)
     else:
             print("Not present")
-            i+=1
     cnt+=1
-    
-#       if daycnt==x:
- #           matchCnt+=1
-  #          i+=1
-   #         print(matchCnt) 
-    #        continue
-       #if weekdays[cnt]==Null:
-     #   break
-
-mismatchCnt = cnt-matchCnt
-
-print("Number of matches: {}".format(matchCnt))
-print("Number of mismatch: {}".format(mismatchCnt))
+print(newweek)
 
 
-# In[ ]:
+#Same assignment using For loop
 
+weekdays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Random"]
+newweek = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','HDay1','Sunday','Mercury','Venus','Mars']
 
+match=[]
+mismatch=[]
 
+for day in weekdays:
+    if day in newweek:
+        match.append(day)
+        newweek.remove(day)
+    else:
+        mismatch.append(day)
+print(match)
 
+for day in newweek:
+        mismatch.insert(0,day)
+        
+print(mismatch)
